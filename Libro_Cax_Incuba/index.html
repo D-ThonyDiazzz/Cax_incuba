@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cajamarca Incuba - Libro Interactivo 3D</title>
+
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+</head>
+<body>
+    <header class="book-header">
+        <div class="header-glow"></div>
+        <div class="header-container">
+            <div class="logo">
+                <img src="assets/images/logo/logo_Cax_incuba.jpeg" alt="Cajamarca Incuba">
+                <div class="logo-text">
+                    <h1>Cajamarca Incuba</h1>
+                    <span>Construyendo un ecosistema emprendedor sostenible</span>
+                </div>
+            </div>
+            <div class="book-title-header">
+                <h2><i class="fas fa-book-reader"></i> Historieta Interactiva</h2>
+                <p>Historias, aprendizajes y herramientas para emprender</p>
+            </div>
+            <button class="menu-btn" id="toggleMenu" aria-label="Abrir índice">
+                <i class="fas fa-bars"></i>
+                <span>Índice</span>
+            </button>
+        </div>
+    </header>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3><i class="fas fa-book-open"></i> Índice de Contenido</h3>
+            <button class="close-sidebar" id="closeSidebar" aria-label="Cerrar índice">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="table-of-contents" id="tableOfContents">
+            </div>
+        <div class="sidebar-section">
+            <h4><i class="fas fa-video"></i> Contenido Multimedia</h4>
+            <div id="videoPagesList"></div>
+        </div>
+    </aside>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <main class="book-container">
+        
+        <button class="nav-arrow left-arrow" id="prevBtn" aria-label="Página anterior">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+
+        <div class="book-3d" id="book">
+            
+            <div class="page left-static">
+                <div class="page-content">
+                    <canvas id="leftCanvas"></canvas>
+                    <div id="leftVideoLayer" class="video-layer"></div>
+                    <div class="page-footer"><span id="leftPageNum"></span></div>
+                    <div class="shadow-overlay-left"></div> </div>
+            </div>
+
+            <div class="page right-static">
+                <div class="page-content">
+                    <canvas id="rightCanvas"></canvas>
+                    <div id="rightVideoLayer" class="video-layer"></div>
+                    <div class="page-footer"><span id="rightPageNum"></span></div>
+                    <div class="shadow-overlay-right"></div> </div>
+            </div>
+
+            <div class="page flipper" id="flipper">
+                <div class="flipper-face front">
+                    <div class="page-content">
+                        <canvas id="flipFrontCanvas"></canvas>
+                        <div id="flipFrontVideoLayer" class="video-layer"></div>
+                        <div class="page-footer"><span id="flipFrontNum"></span></div>
+                        <div class="lighting-effect front-shine"></div> </div>
+                </div>
+                <div class="flipper-face back">
+                    <div class="page-content">
+                        <canvas id="flipBackCanvas"></canvas>
+                        <div id="flipBackVideoLayer" class="video-layer"></div>
+                        <div class="page-footer"><span id="flipBackNum"></span></div>
+                        <div class="lighting-effect back-shadow"></div> </div>
+                </div>
+            </div>
+
+            <div class="spine"></div>
+        </div>
+
+        <button class="nav-arrow right-arrow" id="nextBtn" aria-label="Página siguiente">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+
+        <div class="book-controls">
+            <div class="page-info">
+                <span class="page-indicator" id="pageIndicator">
+                    <i class="fas fa-file-alt"></i> Cargando...
+                </span>
+            </div>
+            
+            <div class="goto-page-container">
+                 <input type="number" id="gotoPageInput" class="goto-page-input" placeholder="Ir a..." min="1">
+                 <button id="gotoPageBtn" class="goto-page-btn"><i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+
+    </main>
+
+    <div class="book-loader" id="loader">
+        <div class="loader-content">
+            <div class="loader-icon">
+                <i class="fas fa-book-open fa-3x"></i>
+                <div class="loader-circle"></div>
+            </div>
+            <h3>Cargando Libro Interactivo</h3>
+            <p>Preparando experiencia 3D...</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
